@@ -46,3 +46,9 @@ services:
       # calls the deployed API instead of localhost:4000.
       - key: VITE_API_BASE_URL
         sync: false
+      # Only needed if roadlink-bus-api's API_KEY is set (auth enabled) -
+      # must match it exactly. Gets bundled into the built site's JS, so it's
+      # visible to anyone via devtools once deployed - not a real secret at
+      # that point, just a gate against casual anonymous scraping.
+      - key: VITE_API_KEY
+        sync: false

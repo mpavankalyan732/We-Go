@@ -1,11 +1,14 @@
 // The only module the UI talks to for bus/booking data — every request goes
 // to the real external Bus API (bus-booking-app/api). Every function returns
 // a Promise and throws an Error with a user-safe .message on failure.
-import { API_BASE_URL } from './config.js';
+import { API_BASE_URL, API_KEY } from './config.js';
 
 async function request(path, options = {}) {
   const res = await fetch(`${API_BASE_URL}${path}`, {
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      ...(API_KEY ? { 'x-api-key': API_KEY } : {})
+    },
     ...options
   });
   const body = await res.json().catch(() => null);
