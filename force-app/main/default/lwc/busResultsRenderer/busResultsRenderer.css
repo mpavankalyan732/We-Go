@@ -1,0 +1,168 @@
+.bus-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.bus-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.bus-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.bus-card.selected {
+  border: 2px solid #0176d3;
+  background: #f4f9ff;
+}
+
+.bus-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.bus-operator {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0176d3;
+  margin: 0;
+}
+
+.bus-number {
+  font-size: 0.9rem;
+  color: #706e6b;
+}
+
+.discount-tag {
+  background: #ff9500;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.price-duration {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.price {
+  font-size: 1.75rem;
+  color: #16325c;
+}
+
+.duration {
+  font-size: 1rem;
+  color: #706e6b;
+}
+
+.bus-timeline {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #fafbfc;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #3e3e3c;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.booking-form {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: #ffffff;
+  border: 1px solid #d8dde6;
+  border-radius: 8px;
+}
+
+.booking-form lightning-input {
+  margin-bottom: 1rem;
+}
+
+.input-error {
+  border-color: #c23934 !important;
+}
+
+.error-message {
+  color: #c23934;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.submit-button {
+  width: 100%;
+}
+
+.booking-confirmation {
+  padding: 2rem;
+  text-align: center;
+}
+
+.success-icon {
+  color: #2e844a;
+  margin-bottom: 1rem;
+}
+
+.confirmation-title {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #2e844a;
+  margin-bottom: 1.5rem;
+}
+
+.booking-details-card {
+  background: white;
+  border: 1px solid #d8dde6;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem auto;
+  max-width: 600px;
+  text-align: left;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.detail-row {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f3f3f3;
+  font-size: 0.9rem;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row strong {
+  color: #16325c;
+  margin-right: 0.5rem;
+}
+
+.busTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0176d3;
+  display: block;
+  padding: 1rem;
+  text-align: center;
+}

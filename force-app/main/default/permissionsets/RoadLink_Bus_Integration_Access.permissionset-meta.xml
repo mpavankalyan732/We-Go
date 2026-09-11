@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>RoadLink Bus Integration Access</label>
+    <description>Grants the Client Credentials Flow run-as user access to the RoadLink_Bus_Integration External Client App.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+</PermissionSet>

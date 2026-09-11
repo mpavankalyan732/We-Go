@@ -1,0 +1,42 @@
+# Render Blueprint for RoadLink's Bus API (bus-booking-app/api) and website
+# (bus-booking-app/web). In the Render dashboard: New > Blueprint > select
+# this repo. Render will detect this file and propose both services below.
+#
+# Env vars marked `sync: false` are secrets/config Render will prompt you to
+# fill in per-environment rather than committing real values here - see
+# bus-booking-app/api/README.md "Salesforce sync" and "Deploying to Render"
+# for what each one does.
+services:
+  - type: web
+    name: roadlink-bus-api
+    runtime: node
+    plan: free
+    rootDir: bus-booking-app/api
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: 22.9.0
+      - key: API_KEY
+        sync: false
+      - key: DB_PATH
+        sync: false
+      - key: SF_CLIENT_ID
+        sync: false
+      - key: SF_CLIENT_SECRET
+        sync: false
+      - key: SF_LOGIN_URL
+        sync: false
+
+staticSites:
+  - name: roadlink-bus-web
+    rootDir: bus-booking-app/web
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      # Set this to the roadlink-bus-api service's public URL once it's live
+      # (e.g. https://roadlink-bus-api.onrender.com), so the built website
+      # calls the deployed API instead of localhost:4000.
+      - key: VITE_API_BASE_URL
+        sync: false

@@ -1,0 +1,131 @@
+<template>
+    <lightning-card icon-name="standard:travel_mode" class="bus-card-container">
+        <template if:false={showBookingConfirmation}>
+            <span class="busTitle">Available Buses</span>
+
+            <div class="bus-list-container">
+                <template for:each={busData} for:item="bus">
+                    <div key={bus.busId} class={bus.cssClass}>
+                        <div class="bus-info">
+                            <h2 class="bus-operator">{bus.operator}</h2>
+                            <div class="bus-number">{bus.busNumber}</div>
+                            <template if:true={bus.discountPercentage}>
+                                <div class="discount-tag">{bus.discountPercentage}% Off</div>
+                            </template>
+                        </div>
+
+                        <div class="price-duration">
+                            <div class="price"><strong>${bus.price}</strong></div>
+                            <div class="duration">{bus.durationInHr}</div>
+                        </div>
+
+                        <div class="bus-timeline">
+                            <span>Departure: {bus.departureTime}</span>
+                            <span>Seats Available: {bus.availableSeats}</span>
+                        </div>
+
+                        <div class="card-footer">
+                            <lightning-button
+                                variant="brand"
+                                label="Select"
+                                onclick={handleSelectBus}
+                                data-bus-id={bus.busId}
+                            >
+                            </lightning-button>
+                        </div>
+
+                        <template if:true={bus.isSelected}>
+                            <div class="booking-form">
+                                <h3 class="form-section-title">Passenger Details</h3>
+
+                                <lightning-input
+                                    label="Full Name"
+                                    value={passengerName}
+                                    onchange={handleInputChange}
+                                    data-field="passengerName"
+                                    class={passengerNameClass}
+                                    required
+                                >
+                                </lightning-input>
+                                <template if:true={passengerNameError}>
+                                    <p class="error-message">Name is required</p>
+                                </template>
+
+                                <lightning-input
+                                    label="Email"
+                                    value={passengerEmail}
+                                    onchange={handleInputChange}
+                                    data-field="passengerEmail"
+                                    type="email"
+                                    class={passengerEmailClass}
+                                    required
+                                >
+                                </lightning-input>
+                                <template if:true={passengerEmailError}>
+                                    <p class="error-message">Valid email is required</p>
+                                </template>
+
+                                <lightning-input
+                                    label="Phone Number"
+                                    value={passengerPhone}
+                                    onchange={handleInputChange}
+                                    data-field="passengerPhone"
+                                    type="tel"
+                                >
+                                </lightning-input>
+
+                                <lightning-input
+                                    label="Seat Number(s)"
+                                    value={seatNumbers}
+                                    onchange={handleInputChange}
+                                    data-field="seatNumbers"
+                                    placeholder="e.g. 12, 13"
+                                    class={seatNumbersClass}
+                                    required
+                                >
+                                </lightning-input>
+                                <template if:true={seatNumbersError}>
+                                    <p class="error-message">At least one seat number is required</p>
+                                </template>
+
+                                <lightning-button
+                                    variant="brand"
+                                    label="Confirm Booking"
+                                    onclick={handleConfirmBooking}
+                                    class="submit-button slds-m-top_large"
+                                >
+                                </lightning-button>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+            </div>
+        </template>
+
+        <template if:true={showBookingConfirmation}>
+            <div class="booking-confirmation">
+                <lightning-icon icon-name="utility:success" size="large" class="success-icon"></lightning-icon>
+                <h2 class="confirmation-title">Booking Confirmed!</h2>
+
+                <div class="booking-details-card">
+                    <div class="detail-row"><strong>Reference ID:</strong> {confirmedBooking.referenceId}</div>
+                    <div class="detail-row"><strong>Bus:</strong> {confirmedBooking.busOperator} ({confirmedBooking.busId})</div>
+                    <div class="detail-row"><strong>Passenger:</strong> {confirmedBooking.passengerName}</div>
+                    <div class="detail-row"><strong>Email:</strong> {confirmedBooking.passengerEmail}</div>
+                    <div class="detail-row"><strong>From:</strong> {confirmedBooking.originCity}</div>
+                    <div class="detail-row"><strong>To:</strong> {confirmedBooking.destinationCity}</div>
+                    <div class="detail-row"><strong>Travel Date:</strong> {confirmedBooking.dateOfTravel}</div>
+                    <div class="detail-row"><strong>Seats:</strong> {confirmedBooking.seatNumbers}</div>
+                </div>
+
+                <lightning-button
+                    variant="brand"
+                    label="Book Another Bus"
+                    onclick={handleBookAnotherBus}
+                    class="slds-m-top_large"
+                >
+                </lightning-button>
+            </div>
+        </template>
+    </lightning-card>
+</template>

@@ -1,0 +1,110 @@
+### RoadLink Bus API — manual test requests
+### Requires the "REST Client" VS Code extension (id: humao.rest-client).
+### Once installed, a small "Send Request" link appears above every request
+### below — click it to fire that call and see the response in a side panel.
+###
+### Run requests top to bottom the first time: several later ones reuse
+### values captured from earlier responses (tripId, bookingReferenceId) via
+### the {{name.response.body.$....}} syntax — no copy-pasting needed.
+###
+### If you've set API_KEY in api/.env, uncomment the x-api-key header lines
+### below and fill in @apiKey.
+
+@baseUrl = http://localhost:4000
+@apiKey =
+
+### Health check (no auth needed)
+GET {{baseUrl}}/health
+
+
+### Search buses — capture the first trip's id for later requests
+# @name search
+GET {{baseUrl}}/api/buses/search?from=Chennai&to=Tirupati&date=2026-09-20
+# x-api-key: {{apiKey}}
+
+@tripId = {{search.response.body.$[0].tripId}}
+
+
+### Trip detail
+GET {{baseUrl}}/api/trips/{{tripId}}
+# x-api-key: {{apiKey}}
+
+
+### Seat map — check this to pick a genuinely "available" seat number below
+GET {{baseUrl}}/api/trips/{{tripId}}/seats
+# x-api-key: {{apiKey}}
+
+
+### Create a booking — change "L1C" if that seat isn't available in your search
+# @name createBooking
+POST {{baseUrl}}/api/bookings
+Content-Type: application/json
+# x-api-key: {{apiKey}}
+
+{
+  "tripId": "{{tripId}}",
+  "seatNumbers": ["L1C"],
+  "passengers": [
+    { "seatNumber": "L1C", "name": "Test User", "age": 30, "gender": "Male", "email": "test@example.com", "phone": "9876543210" }
+  ],
+  "contactEmail": "test@example.com",
+  "contactPhone": "9876543210"
+}
+
+@refId = {{createBooking.response.body.bookingReferenceId}}
+
+
+### Look up the booking by reference ID
+GET {{baseUrl}}/api/bookings/{{refId}}
+# x-api-key: {{apiKey}}
+
+
+### Reschedule — search a different date first (edit the query below), then
+### paste that trip's id in place of newTripId
+POST {{baseUrl}}/api/bookings/{{refId}}/reschedule
+Content-Type: application/json
+# x-api-key: {{apiKey}}
+
+{
+  "newTripId": "PASTE-A-DIFFERENT-TRIP-ID-HERE",
+  "reason": "Change of plans"
+}
+
+
+### Cancel the booking
+POST {{baseUrl}}/api/bookings/{{refId}}/cancel
+Content-Type: application/json
+# x-api-key: {{apiKey}}
+
+{
+  "reason": "Testing cancellation"
+}
+
+
+### Send a (simulated) notification
+POST {{baseUrl}}/api/notifications
+Content-Type: application/json
+# x-api-key: {{apiKey}}
+
+{
+  "bookingReferenceId": "{{refId}}",
+  "type": "Booking Confirmation",
+  "channel": "Email",
+  "recipient": "test@example.com",
+  "messageBody": "Your booking is confirmed."
+}
+
+
+### --- Error-handling checks ---
+
+### Missing required fields -> 400 VALIDATION_ERROR
+POST {{baseUrl}}/api/bookings
+Content-Type: application/json
+# x-api-key: {{apiKey}}
+
+{}
+
+
+### Unknown booking reference -> 404 NOT_FOUND
+GET {{baseUrl}}/api/bookings/BK-DOESNOTEXIST
+# x-api-key: {{apiKey}}

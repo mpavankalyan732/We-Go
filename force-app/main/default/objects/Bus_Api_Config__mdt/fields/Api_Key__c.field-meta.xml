@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Api_Key__c</fullName>
+    <externalId>false</externalId>
+    <label>Api Key</label>
+    <length>255</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+    <description>Value sent as the x-api-key header to the Bus API. Leave blank if the Bus API is running with API_KEY unset (auth disabled).</description>
+</CustomField>

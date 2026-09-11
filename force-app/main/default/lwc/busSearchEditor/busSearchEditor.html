@@ -1,0 +1,42 @@
+<template>
+    <lightning-card title="Please provide the details for your bus search">
+        <div class="slds-var-p-horizontal_medium slds-var-p-bottom_medium">
+            <lightning-input
+                label="Origin City"
+                name="originCity"
+                value={originCity}
+                type="text"
+                required
+                placeholder="City you're departing from"
+                onchange={handleInputChange}
+                read-only={readOnly}
+            >
+            </lightning-input>
+
+            <div class="slds-var-m-top_small">
+                <lightning-input
+                    label="Destination City"
+                    name="destinationCity"
+                    value={destinationCity}
+                    type="text"
+                    placeholder="City you're travelling to"
+                    onchange={handleInputChange}
+                    read-only={readOnly}
+                >
+                </lightning-input>
+            </div>
+
+            <div class="slds-var-m-top_small">
+                <lightning-input
+                    label="Date of Travel"
+                    name="dateOfTravel"
+                    value={dateOfTravel}
+                    type="date"
+                    onchange={handleInputChange}
+                    read-only={readOnly}
+                >
+                </lightning-input>
+            </div>
+        </div>
+    </lightning-card>
+</template>

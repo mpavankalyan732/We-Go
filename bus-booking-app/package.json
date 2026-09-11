@@ -1,0 +1,20 @@
+{
+  "name": "bus-booking-app",
+  "private": true,
+  "version": "1.0.0",
+  "description": "RoadLink bus booking — website (web/) and external Bus API (api/) as one workspace.",
+  "workspaces": [
+    "web",
+    "api"
+  ],
+  "scripts": {
+    "install:all": "npm install",
+    "dev": "concurrently -n API,WEB -c yellow,cyan \"npm run dev -w api\" \"npm run dev -w web\"",
+    "dev:api": "npm run dev -w api",
+    "dev:web": "npm run dev -w web",
+    "build:web": "npm run build -w web"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

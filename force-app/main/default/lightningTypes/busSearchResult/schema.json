@@ -1,0 +1,5 @@
+{
+    "title": "Bus Search Result",
+    "description": "Available buses for the requested route and date",
+    "lightning:type": "@apexClassType/c__BusAgent$AvailableBus"
+}

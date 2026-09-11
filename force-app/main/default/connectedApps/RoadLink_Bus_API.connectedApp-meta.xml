@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>mpavankalyan732@gmail.com</contactEmail>
+    <description>JWT Bearer Flow credential for the RoadLink Bus API (bus-booking-app/api) to push bookings into Salesforce server-to-server.</description>
+    <label>RoadLink Bus API</label>
+    <oauthConfig>
+        <callbackUrl>https://login.salesforce.com/services/oauth2/callback</callbackUrl>
+        <certificate>MIIDVzCCAj+gAwIBAgIUcBa4KlBb8sT/H7C/l1UqUXQ42icwDQYJKoZIhvcNAQELBQAwOzEZMBcGA1UEAwwQUm9hZExpbmsgQnVzIEFQSTERMA8GA1UECgwIUm9hZExpbmsxCzAJBgNVBAYTAklOMB4XDTI2MDkxMDEwNTMxM1oXDTM2MDkwNzEwNTMxM1owOzEZMBcGA1UEAwwQUm9hZExpbmsgQnVzIEFQSTERMA8GA1UECgwIUm9hZExpbmsxCzAJBgNVBAYTAklOMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA9EWPFfUWk9GzbOelWNZgrreN7ekmTQkWEcZx0Z5aiFDSM3yuun5mTnSqZNr1a0Wew2/m8OCGD0hl0s+KMCewzqmyY3fY0LEP06wHS2pk3vSDPaZ+CyR5OFswhIXS6Kh+eMLL8s/Y4lzLbU7rF3lVNAlcmvpqZXSTG5V3AK9bzbC7bwyf3iiROxGRfvRXL1GbKBA0QuyVMlm2oYBmyb5xbXlwhSiwnxCK7cg2mxQtLHIF/HHR/qVEKcy6HRQf8rOcUxsIkmgnvwXvmY5D2w+PX3RbzS1u+Q8/PPHboBwEyT8NCv4WQ+vLrA98iXa9PaWhAI0kCFmztbFPg9MmVbuNnQIDAQABo1MwUTAdBgNVHQ4EFgQUBNLgLYN+0YQOrDFbj4Vr+rLjUsAwHwYDVR0jBBgwFoAUBNLgLYN+0YQOrDFbj4Vr+rLjUsAwDwYDVR0TAQH/BAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEA5YOiEdsqdy6u+egCrTCz64qNqCBxanybUbTyNLLBptdtRcsFIYIH/drDYkIsClnmbzKgrKIPueutV9kvG253lp8SPDMp8yawm+RbadEtUEfXtiO/s/65lhhDjCcnXb0Ci/w7PSXV/h+pfFWyqF+TGuu3EA2pAXnq0amPoASf10F5vHt+/zW4EDKhgdNRXyDRbA3Qk78+5eD9/DOz0kxmkDDzpe2Q1Cj2sEBJztVs54QM/kqfvYLYm7lGeSD7DpDnfOkRG2M+PuXO2JUHrpzuSmrG9nqvx1RBKqYWb5dy1fVpyab4T8ah6kI43TQk0zDkw/gfdwOe/LTnQ/JEpf0nZw==</certificate>
+        <consumerKey>3MVG9vIoc6tt9pNlvyiF0J1qgpIFWlVRisW7h6qDF8xXEmEpXIIsJWVANVM5sqEDHhd.hroRgtG0i8eGSO.LB</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>true</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPkceRequired>true</isPkceRequired>
+        <isRefreshTokenRotationEnabled>true</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Api</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+</ConnectedApp>

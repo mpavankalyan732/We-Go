@@ -1,0 +1,5 @@
+{
+    "title": "Bus Search Input",
+    "description": "Bus search request details",
+    "lightning:type": "@apexClassType/c__BusAgent$BusSearchDetails"
+}

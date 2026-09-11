@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Old_Trip__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <label>Old Trip</label>
+    <referenceTo>Bus_Trip__c</referenceTo>
+    <relationshipLabel>Bus Reschedules</relationshipLabel>
+    <relationshipName>Bus_Reschedules</relationshipName>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>
