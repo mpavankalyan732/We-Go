@@ -38,7 +38,7 @@ services:
     # platform-specific native binary (here, @rolldown/binding-linux-x64-gnu,
     # a transitive dep of vite) missing even though the lockfile lists it -
     # a plain `npm install` then sees "up to date" and skips re-verifying it.
-    buildCommand: rm -rf node_modules && npm install && npm run build
+    buildCommand: rm -rf node_modules ../node_modules && npm install --workspaces=false && npm run build
     staticPublishPath: dist
     envVars:
       # Set this to the roadlink-bus-api service's public URL once it's live
