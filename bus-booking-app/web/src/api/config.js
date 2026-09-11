@@ -1,12 +1,15 @@
 // Points the website at the real external Bus API (bus-booking-app/api).
-// Local dev: run `npm run dev` from bus-booking-app/ — the API listens on
-// :4000. In production (Render), set VITE_API_BASE_URL at build time to the
-// deployed API's public URL (see api/README.md "Deploying to Render").
-export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000';
+// Defaults straight to the live Render deployment so a build "just works"
+// with no env vars required - VITE_API_BASE_URL still overrides this if
+// ever needed (e.g. a different environment). Local dev (`npm run dev` from
+// bus-booking-app/, API on :4000) auto-falls back to localhost instead,
+// since import.meta.env.PROD is false outside a `vite build`.
+export const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL ||
+  (import.meta.env.PROD ? 'https://roadlink-bus-api.onrender.com' : 'http://localhost:4000');
 
-// Only needed if the deployed Bus API has API_KEY set (auth enabled). Once
-// bundled into the built site this is visible to anyone via devtools/network
-// tab — it's not a real secret at that point, just a gate against casual
-// anonymous scraping. Leave VITE_API_KEY unset to match a Bus API running
-// with auth disabled (API_KEY unset there too).
-export const API_KEY = import.meta.env.VITE_API_KEY || '';
+// Must match the deployed Bus API's API_KEY. Bundled into the built site's
+// JS, so it's visible to anyone via devtools/network tab once deployed -
+// not a real secret at that point, just a gate against casual anonymous
+// scraping. VITE_API_KEY still overrides this if the key ever changes.
+export const API_KEY = import.meta.env.VITE_API_KEY || 'c71b98855345c5d9e21da119a06886c75908a7b3af86fafe';
