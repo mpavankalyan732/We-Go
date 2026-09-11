@@ -29,8 +29,9 @@ services:
       - key: SF_LOGIN_URL
         sync: false
 
-staticSites:
-  - name: roadlink-bus-web
+  - type: web
+    name: roadlink-bus-web
+    runtime: static
     rootDir: bus-booking-app/web
     buildCommand: npm install && npm run build
     staticPublishPath: dist
