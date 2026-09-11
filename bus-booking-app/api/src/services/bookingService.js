@@ -5,6 +5,7 @@ import { generateUniqueReferenceId, generateUniquePnr } from '../utils/ids.js';
 import { getTripById, assertTripExists } from './tripService.js';
 import { lockSeats, releaseSeatsByNumber, pickAvailableSeats } from './seatService.js';
 import { syncBookingToSalesforce } from './salesforceSync.js';
+import { sendBookingConfirmationEmail } from './emailService.js';
 
 const GENDERS = new Set(['Male', 'Female', 'Other']);
 
@@ -137,6 +138,7 @@ export async function createBooking(payload) {
 
   const booking = composeBookingJson(getBookingRow(referenceId));
   await syncBookingToSalesforce(booking); // best-effort — never fails the booking itself
+  await sendBookingConfirmationEmail(booking); // best-effort — never fails the booking itself
   return booking;
 }
 
