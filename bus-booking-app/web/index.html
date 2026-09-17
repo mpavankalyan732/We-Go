@@ -3,11 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/images/brand/bus-logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
     <title>RoadLink Bus Booking</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Agentforce Messaging for Web - RoadLink Support agent -->
+    <script type='text/javascript'>
+      function initEmbeddedMessaging() {
+        try {
+          embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+          embeddedservice_bootstrap.init(
+            '00DKZ000000JY8R',
+            'RoadLink_Website_Chat',
+            'https://un1745218491357.my.site.com/ESWRoadLinkWebsiteChat1789636860026',
+            {
+              scrt2URL: 'https://un1745218491357.my.salesforce-scrt.com'
+            }
+          );
+        } catch (err) {
+          console.error('Error loading Embedded Messaging: ', err);
+        }
+      };
+    </script>
+    <script type='text/javascript' src='https://un1745218491357.my.site.com/ESWRoadLinkWebsiteChat1789636860026/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
   </body>
 </html>
