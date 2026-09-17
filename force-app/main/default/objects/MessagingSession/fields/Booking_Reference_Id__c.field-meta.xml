@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Booking_Reference_Id__c</fullName>
+    <externalId>false</externalId>
+    <label>Booking Reference Id</label>
+    <length>20</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+    <description>Booking reference ID (e.g. BK-UU9WPA) captured from site context when a visitor starts a chat about a specific booking, so the agent's routing/reporting can see which booking prompted the conversation without asking again.</description>
+</CustomField>
